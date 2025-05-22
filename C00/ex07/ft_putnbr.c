@@ -21,7 +21,7 @@ void write_char(char i){
 void	ft_putnbr(int nb)
 {
 	char result;
-	char right_num;
+	int right_num;
 	if(nb < 0){
 		write_char('-');
 		nb = nb * -1;
@@ -36,5 +36,3 @@ void	ft_putnbr(int nb)
 		write_char(result);
 	}
 }
-
-
