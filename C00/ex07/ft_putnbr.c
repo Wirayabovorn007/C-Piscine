@@ -13,11 +13,28 @@
 #include <unistd.h>
 #include <stdio.h>
 
+void write_char(char i){
+	write(1, &i, 1);
+}
+
+
 void	ft_putnbr(int nb)
 {
-	int		len;
-	char	nbuf[20];
-
-	len = snprintf(nbuf, sizeof(nbuf), "%d", nb);
-	write(1, &nbuf, len);
+	char result;
+	char right_num;
+	if(nb < 0){
+		write_char('-');
+		nb = nb * -1;
+	}
+	if(nb > 9){
+		right_num = nb % 10;
+		nb = nb / 10;
+		ft_putnbr(nb);
+		ft_putnbr(right_num);
+	}else{
+		result = nb + '0';
+		write_char(result);
+	}
 }
+
+
