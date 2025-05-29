@@ -77,20 +77,26 @@ int	convert_to_decimal(char *str, char *base)
 {
 	int	i;
 	int	sum;
-	int	baselen;
 	int	num;
-	
-	i = 0;
+	int	sign;
+	int	baselen;
+
+	i = -1;
 	sum = 0;
 	num = 0;
+	sign = 1;
 	baselen = len(base);
-	while (i < len(str))
+	while (++i < len(str))
 	{
+		if (str[i] == '-')
+		{
+			sign *= -1;
+			continue ;
+		}
 		num = convert_char_base_to_nbr(str[i], base);
 		if (num == -1)
 			return (0);
 		sum += num * power(baselen, len(str) - i - 1);
-		i++;
 	}
 	return (sum);
 }
@@ -110,6 +116,6 @@ int	ft_atoi_base(char *str, char *base)
 // int	main(void)
 // {
 // 	printf("%d\n", ft_atoi_base("1A", "0123456789ABCDEF"));
-// 	printf("%d\n", ft_atoi_base("1100", "01"));
-// 	printf("%d\n", ft_atoi_base("123", "0123456789"));
+// 	printf("%d\n", ft_atoi_base("10101", "01"));
+// 	printf("%d\n", ft_atoi_base("-123", "0123456789"));
 // }
