@@ -26,7 +26,7 @@ int	check_base(char *base)
 	int	i;
 
 	i = -1;
-	if (len(base) < 2)
+	if (len(base) < 2 || len(base) > 16)
 		return (0);
 	while (++i < len(base))
 	{
@@ -59,31 +59,37 @@ int	power(int num, int expo)
 	}
 	return (j);
 }
-int	convert_char_base_to_nbr(char str, int base)
+int	convert_char_base_to_nbr(char str, char *base)
 {
-	int	res;
+	int	i;
 
-	if (len(base) == 16 && )
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == str)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
 int	convert_to_decimal(char *str, char *base)
 {
 	int	i;
-	int	t;
 	int	sum;
-
+	int	baselen;
+	int	num;
+	
 	i = 0;
 	sum = 0;
-	while (str[i] != '\0')
+	num = 0;
+	baselen = len(base);
+	while (i < len(str))
 	{
-		t = str[i];
-		if (!(t <= '9' && t >= '0'))
-		{
-			t = convert_char_base_to_nbr(t, len(base));
-			sum += t * power(len(base), i);
-		}
-		else
-			sum += (t - '0') * power(len(base), i);
+		num = convert_char_base_to_nbr(str[i], base);
+		if (num == -1)
+			return (0);
+		sum += num * power(baselen, len(str) - i - 1);
 		i++;
 	}
 	return (sum);
@@ -92,10 +98,18 @@ int	convert_to_decimal(char *str, char *base)
 int	ft_atoi_base(char *str, char *base)
 {
 	int	b;
-	int	result;
 
 	b = check_base(base);
-	if (!b)
+	if (b == 0)
 		return (0);
-	result = convert_to_decimal(str, base);
+	return (convert_to_decimal(str, base));
 }
+
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	printf("%d\n", ft_atoi_base("1A", "0123456789ABCDEF"));
+// 	printf("%d\n", ft_atoi_base("1100", "01"));
+// 	printf("%d\n", ft_atoi_base("123", "0123456789"));
+// }
