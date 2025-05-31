@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chutterm <chutterm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andanjir <andanjir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 13:27:31 by chutterm          #+#    #+#             */
-/*   Updated: 2025/05/31 13:40:25 by chutterm         ###   ########.fr       */
+/*   Updated: 2025/05/31 16:44:31 by andanjir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-
-#define SIZE 4
 
 // Write single char
 void	ft_putchar(char c)
@@ -22,7 +20,7 @@ void	ft_putchar(char c)
 }
 
 // Print full grid
-void	print_grid(int **grid)
+void	print_grid(int **grid, int SIZE)
 {
 	int	i;
 	int	j;

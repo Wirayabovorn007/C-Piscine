@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andanjir <andanjir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 13:25:01 by chutterm          #+#    #+#             */
-/*   Updated: 2025/05/31 14:25:33 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/05/31 16:52:58 by andanjir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-#define SIZE 4
-
-void	print_grid(int **grid);
-int		check_input(char *c);
-int		solve(int **grid, int *clues, int row, int col);
+void	print_grid(int **grid, int SIZE);
+int		solve(int **grid, int *clues, int row, int col, int SIZE);
+int		input(int *clues, int argc, char *argv[]);
+int		len(char *l);
 
 // Allocate and initialize grid
-int	**create_grid(void)
+int	**create_grid(int SIZE)
 {
 	int	**grid;
 	int	i;
@@ -43,7 +43,7 @@ int	**create_grid(void)
 }
 
 // Free memory
-void	free_grid(int **grid)
+void	free_grid(int **grid, int SIZE)
 {
 	int	i;
 
@@ -56,27 +56,23 @@ void	free_grid(int **grid)
 	free(grid);
 }
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
-	if (argc != 2 || check_input(argv[1]) == -1)
-	{
-		write(1, "Error\n", 7);
-		return (0);
-	}
-
-	int	clues[SIZE * 4] = {
-		4, 2, 2, 1,  // top
-		1, 3, 2, 3,  // bottom
-		3, 2, 2, 1,  // left
-		1, 2, 2, 3   // right
-	};
+	int	*clues;
 	int	**grid;
 
-	grid = create_grid();
-	if (solve(grid, clues, 0, 0))
-		print_grid(grid);
+	int c = (len(argv[1]) + 1) / 2;
+	int SIZE = c / 4;
+	printf("%d", SIZE);
+	printf("%d\n", c);
+	clues = malloc(sizeof(int) * c);
+	input(clues, argc, argv);
+	grid = create_grid(c);
+	if (solve(grid, clues, 0, 0, SIZE))
+		print_grid(grid, SIZE);
 	else
 		write(1, "No solution\n", 12);
-	free_grid(grid);
+	free_grid(grid, SIZE);
+	free(clues);
 	return (0);
 }
