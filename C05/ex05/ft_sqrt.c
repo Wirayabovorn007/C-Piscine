@@ -12,9 +12,24 @@
 
 int	ft_sqrt(int nb)
 {
+	int	i;
+
 	if (nb == 1)
 		return (1);
-	if (nb < 1)
+	if (nb < 4)
 		return (0);
-	//return (nb **0.5));
+	i = 1;
+	while (i * i <= nb)
+	{
+		if (i * i == nb)
+			return (i);
+		i++;
+	}
+	return (i);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	printf("%d\n", ft_sqrt(2));
+// }
