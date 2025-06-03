@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:21:08 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/02 12:51:27 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:19:00 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int	ft_fibonacci(int index)
 // #include <stdio.h>
 // int main()
 // {
-// 	printf("%d", ft_fibonacci(2));
+// 	printf("%d", ft_fibonacci(9)); //34
 // }

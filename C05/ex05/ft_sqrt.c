@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:22:59 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/02 12:53:06 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:20:47 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int	ft_sqrt(int nb)
 // #include <stdio.h>
 // int main()
 // {
-// 	printf("%d\n", ft_sqrt(2));
+// 	printf("%d", ft_sqrt(1024));
 // }

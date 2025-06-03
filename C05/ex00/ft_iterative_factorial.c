@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:04:42 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/05/30 16:43:32 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:14:57 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	ft_iterative_factorial(int nb)
 // #include <stdio.h>
 // int	main()
 // {
-// 	printf("%d", ft_iterative_factorial(2));
+// 	printf("%d", ft_iterative_factorial(4));
 // }
