@@ -9,15 +9,12 @@
 /*   Updated: 2025/06/03 12:20:47 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 int	ft_sqrt(int nb)
 {
 	int	i;
 
 	if (nb == 1)
 		return (1);
-	if (nb < 4)
-		return (0);
 	i = 1;
 	while (i * i <= nb)
 	{
@@ -25,7 +22,7 @@ int	ft_sqrt(int nb)
 			return (i);
 		i++;
 	}
-	return (i);
+	return (0);
 }
 
 // #include <stdio.h>
