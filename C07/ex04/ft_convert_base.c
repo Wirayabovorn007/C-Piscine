@@ -12,14 +12,57 @@
 
 #include <stdlib.h>
 
-int	to_base_ten(char *nb, char *base);
+int	len(char *c);
 int	check_base(char *base);
+int	ft_atoi_base(char *nb, char *base);
+
+int	get_nbr_len(long n, int base_len)
+{
+	int	len;
+
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n)
+	{
+		n /= base_len;
+		len++;
+	}
+	return (len);
+}
+char	*ft_putnbr_base(int nbr, char *base)
+{
+	char	*res;
+	int		len_nb;
+	long	n;
+
+	n = nbr;
+	len_nb = get_nbr_len(n, len(base));
+	res = (char *)malloc(len_nb + 1);
+	if (!res)
+		return (NULL);
+	res[len_nb] = '\0';
+	if (n < 0)
+	{
+		res[0] = '-';
+		n = -n;
+	}
+	if (n == 0)
+		res[0] = base[0];
+	while (n > 0)
+	{
+		res[--len_nb] = base[n % len(base)];
+		n /= len(base);
+	}
+	return (res);
+}
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int	num;
+	int	decimal;
 
 	if (!check_base(base_from) || !check_base(base_to))
 		return (NULL);
-	num = to_base_ten(nbr, base_from);
+	decimal = ft_atoi_base(nbr, base_from);
+	return (ft_putnbr_base(decimal, base_to));
 }
