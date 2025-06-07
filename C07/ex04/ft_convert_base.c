@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:18:02 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/05 12:16:00 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/07 12:05:28 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ int	get_nbr_len(long n, int base_len)
 	}
 	return (len);
 }
-char	*ft_putnbr_base(int nbr, char *base)
+
+char	*put_nbr_base(int nb, char *base)
 {
 	char	*res;
 	int		len_nb;
 	long	n;
 
-	n = nbr;
+	n = nb;
 	len_nb = get_nbr_len(n, len(base));
-	res = (char *)malloc(len_nb + 1);
+	res = malloc(sizeof(char) * (len_nb + 1));
 	if (!res)
 		return (NULL);
 	res[len_nb] = '\0';
@@ -64,5 +65,16 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (!check_base(base_from) || !check_base(base_to))
 		return (NULL);
 	decimal = ft_atoi_base(nbr, base_from);
-	return (ft_putnbr_base(decimal, base_to));
+	return (put_nbr_base(decimal, base_to));
 }
+
+// #include <stdio.h>
+
+// int	main()
+// {
+// 	char decimal[] = "0123456789";
+// 	char binary[] = "01";
+// 	char hexadecimal[] = "0123456789ABCDEF";
+// 	char octal[] = "poneyvif";
+// 	printf("%s", ft_convert_base("-1111000", binary, decimal)); //-120
+// }

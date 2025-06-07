@@ -6,11 +6,9 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:03:26 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/07 10:52:53 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/07 11:56:41 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <limits.h>
 
 int	len(char *c)
 {
@@ -39,12 +37,10 @@ int	check_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-'
-			|| !(is_alpha(base[i])
-			|| (base[i] <= '9' && base[i] >= '0'))
-			|| base[i] == ' ')
-			return (0);
 		j = i + 1;
+		if (base[i] == '+' || base[i] == '-' || base[i] == ' '
+			|| !(is_alpha(base[i]) || (base[i] >= '0' && base[i] <= '9')))
+			return (0);
 		while (base[j])
 		{
 			if (base[i] == base[j])
