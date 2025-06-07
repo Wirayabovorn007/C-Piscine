@@ -22,14 +22,14 @@ int	len(char *c)
 	return (i);
 }
 
-int	check(char *s, char *c, int i)
+int	is_sep(char *s, char *c, int i)
 {
 	int	j;
 
 	j = 0;
 	while (c[j])
 	{
-		if (s[i + j] != c[j])
+		if (!s[i + j] || s[i + j] != c[j])
 			return (0);
 		j++;
 	}
@@ -38,26 +38,25 @@ int	check(char *s, char *c, int i)
 
 int	count_word(char *str, char *ch)
 {
-	int		i;
-	int		count;
-	char	lastc;
+	int	count;
+	int	in_word;
+	
+}
 
-	i = 0;
+int	len_word(char *str,char *ch ,int i)
+{
+	int	count;
+
 	count = 0;
-	if (!*str || !*ch)
-		return (0);
-	if (len(str) > 0)
-		lastc = str[0];
-	while (i < len(str))
+	while (str[i])
 	{
-		if ((check(str, ch, i) || str[i] == '\0') && lastc != )
+		if (!is_sep(str, ch, i))
 		{
 			count++;
-			i += len(ch);
+			i++;
 		}
 		else
-			i++;
-		lastc = str[i];
+			break ;
 	}
 	return (count);
 }
@@ -66,17 +65,40 @@ char	**ft_split(char *str, char *charset)
 {
 	int		c;
 	int		i;
-	char	*temp;
+	int		w;
+	int		word_len;
 	char	**result;
 
+	if (!str || !charset)
+		return (NULL);
 	i = 0;
 	c = count_word(str, charset);
-	result = malloc(sizeof(int *) * (c + 1));
+	result = malloc(sizeof(char *) * (c + 1));
 	if (!result)
 		return (NULL);
-	result[c + 1] = '\0';
-	while (i < c)
+	while (*str)
 	{
-		
+		if (is_sep(str, charset, 0))
+		{
+			str += len(charset);
+			continue ;
+		}
+		word_len = len_word(str, charset, 0);
+		if (word_len > 0)
+		{
+			result[i] = malloc(word_len + 1);
+			if (!result[i])
+				return (NULL);
+			w = -1;
+			while (++w < word_len)
+				result[i][w] = str[w];
+			result[i][w] = '\0';
+			str += word_len;
+			i++;
+		}
+		else
+			str++;
 	}
+	result[i] = NULL;
+	return (result);
 }
