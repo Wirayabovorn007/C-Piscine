@@ -35,3 +35,20 @@ int	ft_ultimate_range(int **range, int min, int max)
 	}
 	return (size);
 }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// int	main(void)
+// {
+// 	int	*arr;
+// 	int	size;
+// 	int min = 0;
+// 	int max = 23;
+// 	int	i = -1;
+// 	size = ft_ultimate_range(&arr, min, max);
+// 	printf("Range (%d to %d): ", min, max);
+// 	while (++i < size)
+// 		printf("%d ", arr[i]);
+// 	printf("\n");
+// 	free(arr);
+// }
