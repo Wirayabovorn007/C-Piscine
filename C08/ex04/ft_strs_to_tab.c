@@ -23,42 +23,39 @@ int	len(char *c)
 	return (i);
 }
 
-void	cpy(char *src, char *dup1, char *dup2)
+char	*dup(char *src)
 {
-	int	i;
+	int		i = 0;
+	char	*copy;
 
-	i = 0;
-	while (src[i] != 0)
+	copy = malloc(len(src) + 1);
+	if (!copy)
+		return (NULL);
+	while (src[i])
 	{
-		dup1[i] = src[i];
-		dup2[i] = src[i];
+		copy[i] = src[i];
 		i++;
 	}
-	dup1[i] = 0;
-	dup2[i] = 0;
+	copy[i] = 0;
+	return (copy);
 }
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	int				i;
-	int				strlen;
-	unsigned long	size;
 	t_stock_str		*arr;
 
 	arr = (t_stock_str *)malloc(sizeof(t_stock_str) * (ac + 1));
+	if (!arr)
+		return (NULL);
 	i = 0;
 	while (i < ac)
 	{
-		strlen = len(av[i]);
-		size = sizeof(char) * (strlen + 1);
-		arr[i].size = size;
-		arr[i].str = malloc(sizeof(char) * size);
-		if (!arr[i].str)
-			return (NULL);
-		arr[i].copy = malloc(sizeof(char) * size);
+		arr[i].size = len(av[i]);
+		arr[i].str = av[i];
+		arr[i].copy = dup(av[i]);
 		if (!arr[i].copy)
 			return (NULL);
-		cpy(av[i], arr[i].str, arr[i].copy);
 		i++;
 	}
 	arr[i].str = 0;
@@ -74,14 +71,14 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 // 	str[0] = malloc(sizeof(char) * 4);
 // 	str[0] = "ABC";
 // 	str[1] = malloc(sizeof(char) * 7);
-// 	str[1] = "asdfhj";
+// 	str[1] = "Banana";
 // 	str[2] = malloc(sizeof(char) * 10);
 // 	str[2] = "qwe-ert-tyu";
 // 	t_stock_str *res = ft_strs_to_tab(size, str);
 // 	int i = 0;
 // 	while (i < size)
 // 	{
-// 		printf("element: %d\nsize: %d\nstr: %s\ncopy: %s\n",i ,
+// 		printf("\nelement: %d\nsize: %d\nstr: %s\ncopy: %s\n",i ,
 // res[i].size, res[i].str, res[i].copy);
 // 		printf("--------------------------------\n");
 // 		i++;
