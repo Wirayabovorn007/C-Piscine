@@ -25,9 +25,10 @@ int	len(char *c)
 
 char	*dup(char *src)
 {
-	int		i = 0;
+	int		i;
 	char	*copy;
 
+	i = 0;
 	copy = malloc(len(src) + 1);
 	if (!copy)
 		return (NULL);
