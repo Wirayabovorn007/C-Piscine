@@ -95,7 +95,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 // 	char *joined = ft_strjoin(argc - 1, argv + 1, sep);
 // 	if (joined)
 // 	{
-// 		printf("%s", joined);
+// 		printf("%s\n", joined);
 // 		free(joined);
 // 	}
 // }

@@ -26,10 +26,12 @@ int	is_sep(char *sep, char *str, int ind)
 {
 	int	i;
 
+	if (!sep[0])
+		return (0);
 	i = -1;
 	while (sep[++i])
 		if (str[ind + i] != sep[i])
-			return (-1);
+			return (0);
 	return (1);
 }
 
@@ -98,7 +100,7 @@ char	**ft_split(char *str, char *charset)
 	char	**res;
 
 	words = count_words(str, charset);
-	res = malloc(sizeof(char *) * words + 1);
+	res = malloc(sizeof(char *) * (words + 1));
 	if (!res)
 		return (NULL);
 	i = 0;
@@ -125,19 +127,14 @@ char	**ft_split(char *str, char *charset)
 // }
 // int main(void)
 // {
-// 	char *input = "hello<br>world<br>123<br>goodbye";
-// 	char *sep = "<br>";
-// 	char **result = ft_split(input, sep);	
-// 	if (!result)
-// 	{
-// 		printf("Split failed.\n");
-// 		return 1;
-// 	}	
+// 	char *input = "aa<bb>aaaccc";
+// 	char *sep = "bb";
+// 	char **result = ft_split(input,sep);
 // 	printf("Split result:\n");
 // 	for (int i = 0; result[i]; i++)
 // 	{
 // 		printf("  [%d]: \"%s\"\n", i, result[i]);
 // 	}
-// 	free_split(result);	
+// 	free_split(result);
 // 	return 0;
 // }
