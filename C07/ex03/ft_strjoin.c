@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:54:04 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/07 14:10:46 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:44:42 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	total_size(char **arr, char *sep, int size)
 
 	i = 0;
 	total = 0;
-	while (arr[i])
+	while (i < size)
 		total += len(arr[i++]);
 	total += len(sep) * (size - 1);
 	return (total);
@@ -54,6 +54,8 @@ char	*return_size_zero(void)
 	char	*result;
 
 	result = malloc(1);
+	if (!result)
+		return (NULL);
 	result[0] = '\0';
 	return (result);
 }

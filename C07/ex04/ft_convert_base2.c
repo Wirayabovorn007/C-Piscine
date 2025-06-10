@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:03:26 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/07 11:56:41 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:46:29 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_base(char *base)
 	{
 		j = i + 1;
 		if (base[i] == '+' || base[i] == '-' || base[i] == ' '
-			|| !(is_alpha(base[i]) || (base[i] >= '0' && base[i] <= '9')))
+			|| base[i] <= 32 || base[i] == 127)
 			return (0);
 		while (base[j])
 		{

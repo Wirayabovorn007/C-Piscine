@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:18:02 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/07 12:05:28 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:51:20 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int	get_nbr_len(long n, int base_len)
 {
 	int	len;
 
-	len = 0;
 	if (n <= 0)
 		len = 1;
+	else
+		len = 0;
 	while (n)
 	{
 		n /= base_len;
@@ -69,12 +70,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 }
 
 // #include <stdio.h>
-
 // int	main()
 // {
 // 	char decimal[] = "0123456789";
 // 	char binary[] = "01";
 // 	char hexadecimal[] = "0123456789ABCDEF";
 // 	char octal[] = "poneyvif";
-// 	printf("%s", ft_convert_base("-1111000", binary, decimal)); //-120
+// 	printf("%s", ft_convert_base("AB", hexadecimal, decimal)); //171
 // }
