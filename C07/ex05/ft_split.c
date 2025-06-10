@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 12:52:23 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/06/10 14:23:25 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/06/10 15:12:01 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,29 @@ char	**ft_split(char *str, char *charset)
 }
 
 // #include <stdio.h>
-// int main()
+// void free_split(char **arr)
 // {
-// 	char str[] = "1, 2, 3, 4, 5, 6, 7";
-// 	char sep[] = ", "; 
-// 	char **strs = ft_split(str, sep);
-// 	int i = -1;
-// 	while (strs[++i])
-// 		printf("%s", strs[i]);
+// 	if (!arr)
+// 		return;
+// 	for (int i = 0; arr[i]; i++)
+// 		free(arr[i]);
+// 	free(arr);
+// }
+// int main(void)
+// {
+// 	char *input = "hello<br>world<br>123<br>goodbye";
+// 	char *sep = "<br>";
+// 	char **result = ft_split(input, sep);	
+// 	if (!result)
+// 	{
+// 		printf("Split failed.\n");
+// 		return 1;
+// 	}	
+// 	printf("Split result:\n");
+// 	for (int i = 0; result[i]; i++)
+// 	{
+// 		printf("  [%d]: \"%s\"\n", i, result[i]);
+// 	}
+// 	free_split(result);	
+// 	return 0;
 // }
