@@ -4,15 +4,15 @@ SOURCE := $(S_DIR)/ft_putchar.c $(S_DIR)/ft_putstr.c $(S_DIR)/ft_strcmp.c $(S_DI
 OBJS := $(SOURCE:.c=.o)
 NAME := libft.a
 
-CFLAGS := -Wall -Werror -Wextra
+CFLAGS := -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rcs libft.a $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-%.o: %.c
-	gcc $(CFLAGS) -c -I $(H_DIR) $^ -o $@
+$(S_DIR)/%.o: $(S_DIR)/%.c $(H_DIR)/ft.h
+	cc $(CFLAGS) -I$(H_DIR) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
@@ -22,4 +22,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all
+.PHONY: all clean fclean re
