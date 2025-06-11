@@ -80,3 +80,17 @@ char	**ft_split(char *str, char *charset)
 	res[i] = NULL;
 	return (res);
 }
+
+// #include <stdio.h>
+// int	main()
+// {
+// 	char str[] = "aaaa";
+// 	char *sep = "";
+// 	char **res = ft_split(str, sep);
+// 	int i =0;
+// 	while (res[i])
+// 	{
+// 		printf("[%d]: %s\n", i,res[i]);
+// 		i++;
+// 	}
+// }
