@@ -15,7 +15,6 @@ int count_words(char *str, char *sep)
 {
 	int i =0;
 	int in_word = 0;
-
 	while (*str)
 	{
 		if (is_sep(*str, sep))
@@ -35,10 +34,10 @@ int count_words(char *str, char *sep)
 
 char *word_dup(char *str, int len)
 {
-	int i =0;
-	char *dup = malloc(sizeof(char) * (len + 1));
+	char *dup = malloc(sizeof(char) * (len+1));
 	if (!dup)
 		return (NULL);
+	int i =0;
 	while (i < len)
 	{
 		dup[i] = str[i];
@@ -48,11 +47,9 @@ char *word_dup(char *str, int len)
 	return (dup);
 }
 
-
 char	**ft_split(char *str, char *sep)
 {
 	int i = 0;
-	int len;
 	int words = count_words(str, sep);
 
 	char **res = malloc(sizeof(char *) * (words + 1));
@@ -64,8 +61,8 @@ char	**ft_split(char *str, char *sep)
 			str++;
 		else
 		{
+			int len = 0;
 			char *start = str;
-			len = 0;
 			while (*str && !is_sep(*str, sep))
 			{
 				str++;
@@ -81,8 +78,8 @@ char	**ft_split(char *str, char *sep)
 // #include <stdio.h>
 // int	main()
 // {
-// 	char str[] = "Banana";
-// 	char *sep = "a";
+// 	char str[] = "Ba-na-na";
+// 	char *sep = "-";
 // 	char **res = ft_split(str, sep);
 // 	int i =0;
 // 	while (res[i])
