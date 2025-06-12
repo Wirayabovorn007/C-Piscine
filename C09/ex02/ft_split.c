@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/12 10:04:44 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/06/12 11:06:42 by wiboonpr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 int	is_sep(char c, char *charset)
@@ -47,6 +59,22 @@ char	*word_dup(char *start, int len)
 	return (word);
 }
 
+char	*next_word(char **str, char *charset, int *len)
+{
+	char	*start;
+
+	while (**str && is_sep(**str, charset))
+		(*str)++;
+	start = *str;
+	*len = 0;
+	while (**str && !is_sep(**str, charset))
+	{
+		(*str)++;
+		(*len)++;
+	}
+	return (start);
+}
+
 char	**ft_split(char *str, char *charset)
 {
 	int		i;
@@ -61,21 +89,10 @@ char	**ft_split(char *str, char *charset)
 	res = malloc((words + 1) * sizeof(char *));
 	if (!res)
 		return (NULL);
-	while (*str)
+	while (i < words)
 	{
-		if (is_sep(*str, charset))
-			str++;
-		else
-		{
-			start = str;
-			while (*str && !is_sep(*str, charset))
-			{
-				str++;
-				len++;
-			}
-			res[i++] = word_dup(start, len);
-			len = 0;
-		}
+		start = next_word(&str, charset, &len);
+		res[i++] = word_dup(start, len);
 	}
 	res[i] = NULL;
 	return (res);
@@ -84,8 +101,8 @@ char	**ft_split(char *str, char *charset)
 // #include <stdio.h>
 // int	main()
 // {
-// 	char str[] = "aaaa";
-// 	char *sep = "";
+// 	char str[] = "Banana";
+// 	char *sep = "a";
 // 	char **res = ft_split(str, sep);
 // 	int i =0;
 // 	while (res[i])
